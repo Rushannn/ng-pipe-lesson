@@ -1,15 +1,12 @@
-import { Component } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+@Pipe({
+  name: 'appTextTransform',
+  pure: true
 })
-export class AppComponent {
-  title = 'ng-pipe-lesson';
-
+export class TextTransformationPipe implements PipeTransform {
   transform(value: string, prefix: string, operator: 'uppercase' | 'lowercase' = 'uppercase'): string {
-    console.log('AppComponent', value);
+    console.log('TextTransformation', value);
     value = !value ? prefix : prefix + ' ' + value;
 
     switch (operator) {
@@ -19,4 +16,5 @@ export class AppComponent {
         return value.toLowerCase();
     }
   }
+
 }
